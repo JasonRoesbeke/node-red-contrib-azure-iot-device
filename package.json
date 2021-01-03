@@ -1,5 +1,5 @@
 {
-  "name": "node-red-contrib-azure-iot-device",
+  "name": "node-red-contrib-azure-iot-device_temp",
   "description": "Node-RED node to connect to the Azure IoT platform as a device.",
   "version": "0.2.0",
   "repository": {

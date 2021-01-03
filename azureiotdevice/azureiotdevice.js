@@ -32,6 +32,8 @@ var GlobalProvisoningEndpoint = "global.azure-devices-provisioning.net";
 
 var crypto = require('crypto');
 
+var process = require('process');
+
 /**
  * The "azure-iot-device" node enables you to represent an Azure IoT Device in Node-Red.
  * The node provide connecting a device using connection string and DPS
@@ -78,6 +80,19 @@ module.exports = function (RED) {
         RED.nodes.createNode(node, config);
         setStatus(node, statusEnum.disconnected);
 
+        node.log('AZUREDEVICEID ' + process.env.AZUREDEVICEID);
+        node.deviceid = process.env.AZUREDEVICEID;
+        node.log('connectiontype ' + 'constr');
+        node.connectiontype = 'constr';
+        node.log('authenticationmethod ' + 'sas');
+        node.authenticationmethod = 'sas';
+        node.log('IOTHUBHOSTNAME ' + process.env.IOTHUBHOSTNAME);
+        node.iothub = process.env.IOTHUBHOSTNAME;
+        node.log('SASKEY ' + process.env.SASKEY);
+        node.saskey = process.env.SASKEY;
+        node.log('IOTHUBHOSTNAME ' + process.env.PROTOCOL);
+        node.protocol = process.env.PROTOCOL;
+        
         // Create the device
         initiateDeviceSettings(node);
     };
